@@ -1,26 +1,44 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <main class="main">
+    <SwitchTemp />
+    <component :is="currentPage" />
+    <SelectLang />
+  </main>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HomePage from "./components/HomePage.vue";
+import WeatherForecast from "./components/WeatherForecast.vue";
+import NextFiveDays from "./components/NextFiveDays.vue";
+import SwitchTemp from "./components/SwitchTemp.vue";
+import SelectLang from "./components/SelectLang.vue";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HomePage,
+    WeatherForecast,
+    NextFiveDays,
+    SwitchTemp,
+    SelectLang,
+  },
+  data() {
+    return {
+      currentPage: "HomePage",
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.main {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: url("./assets/img/sky.jpg") no-repeat center / cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 </style>
