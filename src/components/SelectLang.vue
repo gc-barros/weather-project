@@ -5,13 +5,13 @@
       <input type="radio" name="lang" id="pt-br" value="Português" v-model="selectedLang">
   
       <label for="en-us"><img src="../assets/img/estados-unidos.png" alt="Bandeira dos Estados Unidos"></label>
-      <input type="radio" name="lang" id="en-us" value="Inglês" v-model="selectedLang">
+      <input type="radio" name="lang" id="en-us" value="English" v-model="selectedLang">
   
       <label for="es"><img src="../assets/img/spain.png" alt="Bandeira da Espanha"></label>
-      <input type="radio" name="lang" id="es" value="Espanhol" v-model="selectedLang">
+      <input type="radio" name="lang" id="es" value="Español" v-model="selectedLang">
     </div>
 
-    <span>Idioma selecionado: {{selectedLang}}</span>
+    <span>{{langTexts[selectedLang]}}: {{selectedLang}}</span>
   </div>
 </template>
 
@@ -27,6 +27,11 @@ export default {
       selectedLang,
     }
   },
+  data() {
+    return {
+      langTexts: {"Português": "Idioma selecionado", "English": "Selected language", "Español": "Idioma seleccionado" }
+    }
+  }
 }
 </script>
 

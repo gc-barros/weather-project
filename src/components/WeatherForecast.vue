@@ -46,7 +46,7 @@ export default {
   },
   computed: {
     getButtonTranslated: function() {
-      const langPhs = {"Português": "Ver previsão para os próximos 5 dias", "Inglês": "See forecast for the next 5 days", "Espanhol": "Ver previsión para los próximos 5 días"}
+      const langPhs = {"Português": "Ver previsão para os próximos 5 dias", "English": "See forecast for the next 5 days", "Español": "Ver previsión para los próximos 5 días"}
       return langPhs[this.selectedLang]
     },
   },

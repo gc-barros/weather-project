@@ -12,7 +12,7 @@ export const useWeatherStore = defineStore("weather", {
   actions: {
     async getWeatherForecast(typedCity) {
       let unitTemp = this.isCelsiusSelected ? "metric" : "imperial"
-      const langCodes = {"Português": "pt_br", "Inglês": "en", "Espanhol": "es"}
+      const langCodes = {"Português": "pt_br", "English": "en", "Español": "es"}
 
       let url = `http://api.openweathermap.org/data/2.5/weather?q=${encodeURI(typedCity)}&appid=637ae8f71a89e903dd09e10819360730&units=${unitTemp}&lang=${langCodes[this.selectedLang]}`;
 
@@ -35,7 +35,7 @@ export const useWeatherStore = defineStore("weather", {
     async getFiveDaysForecast() {
       console.log('maoi')
       let unitTemp = this.isCelsiusSelected ? "metric" : "imperial"
-      const langCodes = {"Português": "pt_br", "Inglês": "en", "Espanhol": "es"}
+      const langCodes = {"Português": "pt_br", "English": "en", "Español": "es"}
 
       let url = `http://api.openweathermap.org/data/2.5/forecast?lat=${this.resultForecast.coord.lat}&lon=${this.resultForecast.coord.lon}&appid=637ae8f71a89e903dd09e10819360730&units=${unitTemp}&lang=${langCodes[this.selectedLang]}`;
 

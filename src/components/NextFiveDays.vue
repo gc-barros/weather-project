@@ -42,7 +42,7 @@ export default {
   data() {
     return {
       fiveDaysList: [],
-      langCodes: {"Português": "pt-BR", "Inglês": "en", "Espanhol": "es"}
+      langCodes: {"Português": "pt-BR", "English": "en", "Español": "es"}
     }
   },
   methods: {
