@@ -1,13 +1,42 @@
 <template>
   <section class="home">
-    <h1 class="home__title">Como está o tempo hoje?</h1>
-    <input class="home__input" type="text" placeholder="Digite o nome da cidade">
+    <h1 class="home__title">{{getTextTranslated}}</h1>
+    <input class="home__input" type="text" :placeholder="getPhTranslated" v-model="typedCity" ref="input" @keypress.enter="getWeatherForecast(typedCity)">
   </section>
 </template>
 
 <script>
+import { storeToRefs } from 'pinia';
+import { useWeatherStore } from '@/stores/weather';
 export default {
+  setup() {
+    const weatherStore = useWeatherStore();
+    const { selectedLang, isCelsiusSelected, resultForecast, currentPage } = storeToRefs(weatherStore);
+    const { getWeatherForecast } = weatherStore;
 
+    return {
+      selectedLang,
+      isCelsiusSelected,
+      resultForecast,
+      currentPage,
+      getWeatherForecast
+    }
+  },
+  data() {
+    return {
+      typedCity: "",
+    }
+  },
+  computed: {
+    getTextTranslated: function() {
+      const langTexts = {"Português": "Como está o tempo hoje?", "Inglês": "How is the weather today?", "Espanhol": "¿Qué tiempo hace hoy?"}
+      return langTexts[this.selectedLang]
+    },
+    getPhTranslated: function() {
+      const langPhs = {"Português": "Digite o nome da cidade", "Inglês": "Enter the city name", "Espanhol": "Ingrese el nombre de la ciudad"}
+      return langPhs[this.selectedLang]
+    },
+  },
 }
 </script>
 
@@ -32,7 +61,6 @@ export default {
   border-radius: 10px;
   border: 0;
   width: 100%;
-  max-width: 710px;
   outline: 0;
 }
 

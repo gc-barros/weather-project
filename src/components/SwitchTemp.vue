@@ -8,8 +8,17 @@
 </template>
 
 <script>
+import { useWeatherStore } from '@/stores/weather';
+import { storeToRefs } from 'pinia';
 export default {
+  setup() {
+    const weatherStore = useWeatherStore();
+    const { isCelsiusSelected } = storeToRefs(weatherStore);
 
+    return {
+      isCelsiusSelected
+    }
+  },
 }
 </script>
 

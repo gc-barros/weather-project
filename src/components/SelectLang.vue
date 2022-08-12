@@ -16,12 +16,17 @@
 </template>
 
 <script>
+import { storeToRefs } from 'pinia';
+import { useWeatherStore } from '@/stores/weather';
 export default {
-  data() {
+  setup() {
+    const weatherStore = useWeatherStore();
+    const { selectedLang } = storeToRefs(weatherStore);
+
     return {
-      selectedLang: "Português",
+      selectedLang,
     }
-  }
+  },
 }
 </script>
 
