@@ -4,9 +4,9 @@
     <h2 class="forecast__description">Previsão para 5 dias</h2>
 
     <ul class="forecast__fivedays">
-      <li class="fivedays__day" v-for="day in resultFiveDays.list.filter((el, i) => [0,8,16,24,32].includes(i))" :key="day.dt">
+      <li class="fivedays__day" v-for="day in fiveDaysList" :key="day.dt">
         <span class="day__date">{{
-          new Date(day.dt_txt).toLocaleDateString('pt-BR', {weekday: 'short', month: 'short', day: 'numeric'}).replaceAll(".","").replace("de", "")
+          new Date(day.dt_txt).toLocaleDateString(langCodes[selectedLang], {weekday: 'short', month: 'short', day: 'numeric'}).replaceAll(".","").replace("de", "")
         }}</span>
         <img :src="`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`" alt="Weather icon">
         <div class="day__maxmin">
@@ -28,7 +28,7 @@ import { storeToRefs } from 'pinia';
 export default {
   setup() {
     const weatherStore = useWeatherStore();
-    const { resultForecast, currentPage, isCelsiusSelected, selectedLang, resultFiveDays } = storeToRefs(weatherStore);
+    const { resultForecast, currentPage, isCelsiusSelected, selectedLang } = storeToRefs(weatherStore);
     const { getFiveDaysForecast } = weatherStore;
 
     return {
@@ -37,11 +37,29 @@ export default {
       isCelsiusSelected,
       selectedLang,
       getFiveDaysForecast,
-      resultFiveDays,
+    }
+  },
+  data() {
+    return {
+      fiveDaysList: [],
+      langCodes: {"Português": "pt-BR", "Inglês": "en", "Espanhol": "es"}
+    }
+  },
+  methods: {
+    async handleGetFiveDays() {
+      this.fiveDaysList = await this.getFiveDaysForecast();
+    }
+  },
+  watch: {
+    isCelsiusSelected() {
+      this.handleGetFiveDays()
+    },
+    selectedLang() {
+      this.handleGetFiveDays()
     }
   },
   mounted() {
-    this.getFiveDaysForecast();
+    this.handleGetFiveDays()
   }
 }
 </script>
@@ -56,22 +74,27 @@ export default {
 }
 
 .fivedays__day {
-  display: flex;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 134px 40px 264px auto;
+  text-align: left;
+  gap: 40px;
   align-items: center;
+  justify-content: left;
 }
 
 .fivedays__day > img {
   width: 100%;
   max-width: 40px;
-  margin-right: 45px;
 }
 
 .day__date {
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
-  margin-right: 33px;
   text-transform: capitalize;
+  text-align: left;
+  white-space: nowrap;
 }
 
 .day__maxmin {
@@ -94,7 +117,39 @@ export default {
 }
 
 .day__description {
-  margin-left: 39px;
   line-height: 20px;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 767px) {
+  .day__description {
+    display: none;
+  }
+
+  .forecast__fivedays {
+    margin-top: 15px;
+  }
+
+  .fivedays__day {
+    grid-template-columns: 80px 20px 160px;
+    gap: 10px;
+  }
+
+  .day__maxmin--temp, .day__date {
+    font-size: 12px;
+  }
+
+  .fivedays__day > img {
+    max-width: 20px;
+  }
+
+  .day__maxmin--gradient {
+    width: 97px;
+  }
+
+  .day__maxmin {
+    gap: 10px;
+  }
+
 }
 </style>

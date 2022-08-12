@@ -4,11 +4,11 @@
     <h2 class="forecast__description">{{resultForecast.weather[0].description}}</h2>
 
     <div class="forecast__weather">
-      <span class="weather__temp">{{resultForecast.main.temp}}°</span>
+      <span class="weather__temp">{{resultForecast.main.temp.toFixed()}}°</span>
       <img :src="`http://openweathermap.org/img/wn/${resultForecast.weather[0].icon}@2x.png`" alt="Weather icon">
     </div>
 
-    <span class="forecast__maxmin"><strong>MAX:</strong> {{resultForecast.main.temp_max}}° <strong>MIN:</strong> {{resultForecast.main.temp_min}}°</span>
+    <span class="forecast__maxmin"><strong>MAX:</strong> {{resultForecast.main.temp_max.toFixed()}}° <strong>MIN:</strong> {{resultForecast.main.temp_min.toFixed()}}°</span>
 
     <button class="forecast__button" @click="handleFiveDays">{{getButtonTranslated}}</button>
   </section>
@@ -34,7 +34,6 @@ export default {
   methods: {
     handleFiveDays() {
       this.currentPage = "NextFiveDays"
-      console.log(2)
     }
   },
   watch: {
@@ -50,7 +49,7 @@ export default {
       const langPhs = {"Português": "Ver previsão para os próximos 5 dias", "Inglês": "See forecast for the next 5 days", "Espanhol": "Ver previsión para los próximos 5 días"}
       return langPhs[this.selectedLang]
     },
-  }
+  },
 }
 </script>
 

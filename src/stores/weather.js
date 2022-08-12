@@ -7,7 +7,6 @@ export const useWeatherStore = defineStore("weather", {
       isCelsiusSelected: true,
       selectedLang: "Português",
       resultForecast: {},
-      resultFiveDays: {},
     };
   },
   actions: {
@@ -48,8 +47,7 @@ export const useWeatherStore = defineStore("weather", {
         }
         let json = await response.json();
         console.log(json);
-        this.resultFiveDays = json
-
+        return json.list.filter((el, i) => [0,8,16,24,32].includes(i))
       } catch (err) {
         console.log(err)
       }
