@@ -37,7 +37,7 @@ export const useWeatherStore = defineStore("weather", {
       let unitTemp = this.isCelsiusSelected ? "metric" : "imperial"
       const langCodes = {"Português": "pt_br", "English": "en", "Español": "es"}
 
-      let url = `http://api.openweathermap.org/data/2.5/forecast?lat=${this.resultForecast.coord.lat}&lon=${this.resultForecast.coord.lon}&appid=637ae8f71a89e903dd09e10819360730&units=${unitTemp}&lang=${langCodes[this.selectedLang]}`;
+      let url = `https://api.openweathermap.org/data/2.5/forecast?lat=${this.resultForecast.coord.lat}&lon=${this.resultForecast.coord.lon}&appid=637ae8f71a89e903dd09e10819360730&units=${unitTemp}&lang=${langCodes[this.selectedLang]}`;
 
       try {
         let response = await fetch(url);
