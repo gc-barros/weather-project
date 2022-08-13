@@ -27,12 +27,12 @@
   <tr>
     <td>
       <a href="https://weather-project-gcb.vercel.app/" target="_blank">
-        <img width="500" alt="Tela inicial" src="">
+        <img width="500" alt="Tela inicial" src="https://raw.githubusercontent.com/gc-barros/weather-project/master/src/assets/img/screenshots/0100.png?token=GHSAT0AAAAAABXS6YLLWSNV2TMWJQUICLMGYXW6UDQ">
       </a>
     </td>
     <td>
       <a href="https://weather-project-gcb.vercel.app/" target="_blank">
-        <img width="500" alt="Lista de tarefas" src="">
+        <img width="500" alt="Lista de tarefas" src="https://raw.githubusercontent.com/gc-barros/weather-project/master/src/assets/img/screenshots/0101.png?token=GHSAT0AAAAAABXS6YLLOEHVD33XVBYZH4QEYXW6UNQ">
       </a>
     </td>
   </tr>
@@ -43,12 +43,12 @@
   <tr>
     <td>
       <a href="https://weather-project-gcb.vercel.app/" target="_blank">
-        <img width="500" alt="Tela inicial" src="">
+        <img width="500" alt="Tela inicial" src="https://raw.githubusercontent.com/gc-barros/weather-project/master/src/assets/img/screenshots/0102.png?token=GHSAT0AAAAAABXS6YLKS4ONKOVYJTTFBUMWYXW6UUQ">
       </a>
     </td>
     <td>
       <a href="https://weather-project-gcb.vercel.app/" target="_blank">
-        <img width="500" alt="Lista de tarefas" src="">
+        <img width="500" alt="Lista de tarefas" src="https://raw.githubusercontent.com/gc-barros/weather-project/master/src/assets/img/screenshots/0103.png?token=GHSAT0AAAAAABXS6YLLCGLNSPAOAIQWTONKYXW6U4Q">
       </a>
     </td>
   </tr>
